@@ -10,7 +10,7 @@ const std::vector<Operator> OPERATORS = {
     Operator("*",       1, [](double a, double b)   { return a * b; }),
     Operator("/",       1, [](double a, double b)   { return a / b; }),
     Operator("%",       1, [](double a, double b)   { return fmod(a,b); }),
-    Operator("abs",     0, [](double a)             { return fabs(a); })
+    Operator("abs",     3, [](double a)             { return fabs(a); })
 };
 
 std::ostream& operator<<(std::ostream& out, const Point& p) {
