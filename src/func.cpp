@@ -14,15 +14,15 @@ const std::vector<Operator> OPERATORS = {
     Operator("sqrt",    3, [](double a)             { return sqrt(a); }),
     Operator("log",     3, [](double a)             { return log(a); }),
     Operator("exp",     3, [](double a)             { return exp(a); }),
-    Operator("sin",     3, [](double a)             { return sin(a); }),
-    Operator("cos",     3, [](double a)             { return cos(a); }),
-    Operator("tan",     3, [](double a)             { return tan(a); }),
     Operator("arcsin",  3, [](double a)             { return asin(a); }),
     Operator("arccos",  3, [](double a)             { return acos(a); }),
     Operator("arctan",  3, [](double a)             { return atan(a); }),
     Operator("sinh",    3, [](double a)             { return sinh(a); }),
     Operator("cosh",    3, [](double a)             { return cosh(a); }),
-    Operator("tanh",    3, [](double a)             { return tanh(a); })
+    Operator("tanh",    3, [](double a)             { return tanh(a); }),
+    Operator("sin",     3, [](double a)             { return sin(a); }),
+    Operator("cos",     3, [](double a)             { return cos(a); }),
+    Operator("tan",     3, [](double a)             { return tan(a); })
 };
 
 std::ostream& operator<<(std::ostream& out, const Point& p) {
