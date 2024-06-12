@@ -1,8 +1,8 @@
-name: Build and test
+name: CI Pipeline
 
 on:
   push:
-    branches: [ "main, develop" ]
+    branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
 
@@ -23,3 +23,25 @@ jobs:
           cd bin
           ctest
           cd ..
+
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.run_number  }}
+          release_name: Release ${{ github.run_number  }}
+          body: |
+            Automatic release for the version ${{ github.run_number }}
+          prerelease: true
+      
+      - name: Upload release assets
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_name: gradient-descent-ubuntu-latest
+          asset_path: ./bin/gradient_descent
+          asset_content_type: application/octet-stream
